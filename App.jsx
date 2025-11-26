@@ -1,7 +1,10 @@
-import { FlatList, Pressable, StyleSheet, Text, TextInput, View, Image } from 'react-native';
+import { FlatList, Pressable, StyleSheet, Text, TextInput, View, Image, Linking } from 'react-native';
 import Busca from './components/Busca';
 import { useState } from "react";
 import nasaClient from './utils/nasaClient';
+import AntIcon from '@expo/vector-icons/AntDesign';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
 
 export default function App() {
 
@@ -54,6 +57,20 @@ export default function App() {
           );
         }}
       />
+      <View style={styles.footer}>
+          <MaterialCommunityIcons name="face-woman-profile" size={36} color="black" />
+        <Text>Lia Matsubara</Text>
+        <View style={styles.socialIcons}>
+          <Pressable
+            onPress={() => Linking.openURL('https://www.linkedin.com/')}>
+            <FontAwesome name="linkedin-square" size={24} color="black" />
+          </Pressable>
+          <Pressable
+            onPress={() => Linking.openURL('https://github.com/liamatsubara')}>
+            <AntIcon name='github' size={24}/>
+          </Pressable>
+        </View>
+      </View>
     </View>
   );
 }
@@ -90,5 +107,21 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#666',
     marginTop: 2,
-  }
+  },
+  footer: {
+    borderColor: '#DDD',
+    borderWidth: 1,
+    width: '80%',
+    alignItems: 'center',
+    padding: 12,
+    marginTop: 8,
+    borderRadius: 4,
+    marginBottom: 10
+  },
+  socialIcons: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    width: '10%', 
+    marginTop: 8,
+  },
 });
